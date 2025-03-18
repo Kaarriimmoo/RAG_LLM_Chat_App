@@ -244,18 +244,21 @@ else:
                 st.write_stream(stream_llm_rag_response(llm_stream, messages))
 
 
-with st.sidebar:
-    st.divider()
-    st.header("YouTube Link")
-    youtube_link = st.text_input("Füge hier deinen YouTube Link ein:", key="youtube_link")
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Transkript laden"):
-            from rag_methods import load_youtube_to_db
-            load_youtube_to_db()
-    with st.expander("Summarize your YouTube video ℹ️"):
-        system_prompt = """Du bist ein erfahrener Assistent, der YouTube-Videos anhand ihres Transkripts zusammenfasst.
+# Unterhalb des Main Chat App Bereichs:
+if not (missing_openai and missing_anthropic and ("AZ_OPENAI_API_KEY" not in os.environ)):
+    with st.sidebar:
+        st.divider()
+        st.header("YouTube Link")
+        youtube_link = st.text_input("Füge hier deinen YouTube Link ein:", key="youtube_link")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Transkript laden"):
+                from rag_methods import load_youtube_to_db
+                load_youtube_to_db()
+                
+        with st.expander("Summarize your YouTube video ℹ️"):
+            system_prompt = """Du bist ein erfahrener Assistent, der YouTube-Videos anhand ihres Transkripts zusammenfasst.
 Erstelle eine strukturierte und präzise Zusammenfassung, die insgesamt maximal 20.000 Zeichen umfasst, indem du folgender Anleitung folgst:
 
 - Einleitung:
@@ -266,6 +269,6 @@ Erstelle eine strukturierte und präzise Zusammenfassung, die insgesamt maximal 
   Erstelle 2-3 mögliche Anschlussfragen, die ein Nutzer basierend auf diesem Video sinnvollerweise stellen könnte, um das Thema weiter zu vertiefen.
 
 Die Sprache soll klar, präzise und verständlich sein. Vermeide unnötige Details oder Wiederholungen."""
-        st.code(system_prompt, language="text")
+            st.code(system_prompt, language="text")
 
 
