@@ -249,11 +249,11 @@ if not (missing_openai and missing_anthropic and ("AZ_OPENAI_API_KEY" not in os.
     with st.sidebar:
         st.divider()
         st.header("YouTube Link")
-        youtube_link = st.text_input("Füge hier deinen YouTube Link ein:", key="youtube_link")
+        youtube_link = st.text_input("Insert your YouTube link here:", key="youtube_link")
         
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("Transkript laden"):
+            if st.button("Load"):
                 from rag_methods import load_youtube_to_db
                 load_youtube_to_db()
                 
