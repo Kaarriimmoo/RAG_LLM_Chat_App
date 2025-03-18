@@ -144,19 +144,19 @@ else:
         )
 
         # Erklärungstext zum Temperature Parameter
-        with st.expander("Was bedeutet Temperature? ℹ️"):
+        with st.expander("What does temperature mean? ℹ️"):
             st.markdown(
                 """
                 **Definition:**  
-                Die **Temperature** beeinflusst die Zufälligkeit und Kreativität der Ausgaben eines Sprachmodells:
+                The **temperature** influences the randomness and creativity of the output of a language model:
                 
-                - **Niedrige Werte (z.B. 0-0.3):**  
-                  Erzeugen deterministischere und konsistentere Antworten.
+                - **Low values (e.g. 0-0.3):**  
+                  Produce more deterministic and consistent responses.
                   
-                - **Hohe Werte (z.B. 0.7-1.0):**  
-                  Erlauben kreativer, aber auch variablere und manchmal inkonsistentere Ausgaben.
+                - High values (e.g. 0.7-1.0):**  
+                  Allow for more creative, but also more variable and sometimes inconsistent outputs.
                   
-                Experimentiere mit verschiedenen Werten, um die für deine Anwendung optimale Balance zwischen Kreativität und Konsistenz zu finden.
+                Experiment with different values to find the optimal balance between creativity and consistency for your application.
                 """
             )
 
